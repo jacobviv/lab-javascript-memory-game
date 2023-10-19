@@ -21,6 +21,7 @@ class MemoryGame {
     let shuffledCards = this.cards
     for (let i = shuffledCards.length - 1; i > 0; i--) {
       let randIndex = Math.floor(Math.random() * (i + 1));  //  Math.random -> de 0 (incluido) a 1 (excluido)
+      // al multiplicar por (i + 1) nos da un número random de los que quedan menores de i
       [shuffledCards[randIndex], shuffledCards[i]] = [shuffledCards[i], shuffledCards[randIndex]]
     }
     return shuffledCards
@@ -37,7 +38,7 @@ class MemoryGame {
 
   checkIfFinished() {
     // ... write your code here
-    if (this.pairsGuessed === 12) return true
+    if (this.pairsGuessed === this.cards.length / 2) return true
     else if (this.pickedCards.length === 0) return false
     else return false
   }
